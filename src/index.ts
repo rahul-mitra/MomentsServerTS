@@ -76,7 +76,8 @@ app.get('/', (req, res) => {
     res.send(['Invalid Data']);
 });
 app.post('/uploadImage', upload.single('moment'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host')
+    // const url = req.protocol + '://' + req.get('host');
+    const url =  'https://' + req.get('host')
     console.log("URL", url);
     // for (var i = 0; i < req.files.length; i++) {
     console.log("request body", req.body);
@@ -269,7 +270,7 @@ app.post("/updateMomentWithoutImage", async (req, res) => {
 
 app.post("/updateMomentWithImage", upload.single('moment'), async (req, res) => {
     console.log("updating moment", req.body);
-    const url = req.protocol + '://' + req.get('host')
+    const url = 'https://' + req.get('host')
     console.log("URL ", url);
     var reqFile = url + '/uploads/' + req.file.filename;
     let MomentToUpdate = JSON.parse(req.body.momentOld);
