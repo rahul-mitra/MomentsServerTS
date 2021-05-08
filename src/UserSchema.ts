@@ -8,9 +8,10 @@ export interface IUserBase {
 }
 
 export interface IMoments{
-    image:string,
-    tags:Array<string>,
-    title:string,
+    image:string;
+    tags:Array<string>;
+    title:string;
+    time:Date;
     _id:mongoose.Types.ObjectId
 }
 
@@ -28,6 +29,6 @@ export const UserSchema = new mongoose.Schema({
     fullName:{type:String,required: true},
     city:{type:String,required:true},
     moments:{type:Array}
-});
+},{timestamps:{createdAt:true,updatedAt:true}});
 
 export const UserModel = mongoose.model<IUser>("users", UserSchema, "users");

@@ -94,6 +94,7 @@ app.post('/uploadImage', upload.single('moment'), (req, res, next) => {
             image: reqFile,
             tags: tags,
             title: title,
+            time:new Date(),
             _id: new mongoose.Types.ObjectId()
         };
         console.log("found user ", doc);
@@ -290,6 +291,7 @@ app.post("/updateMomentWithImage", upload.single('moment'), async (req, res) => 
                 dbMomentToUpdate.tags = newMomentToUpdate.tags;
                 dbMomentToUpdate.title = newMomentToUpdate.title;
                 dbMomentToUpdate.image = reqFile;
+                dbMomentToUpdate.time = new Date();
 
                 doc.markModified('moments');
                 var dbRes = await doc.save();
