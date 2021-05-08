@@ -65,8 +65,8 @@ const MongoConnected = MongooseDBConnection(DBconnectionString);
 
 
 const app = express();
-app.options('*', cors(options));
-app.use(cors(options));
+app.options('*', cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: 1024 * 1024, type: "*" }));
 app.use(express.static('public'))
